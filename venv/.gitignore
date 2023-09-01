@@ -6,3 +6,9 @@ lightgbm/
 pyvenv.cfg
 share/
 xgboost/
+feeds_data
+feeds_data_5million
+post_popularity
+posts
+users
+.ipynb_checkpoints/
