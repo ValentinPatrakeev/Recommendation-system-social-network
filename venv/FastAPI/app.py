@@ -10,8 +10,10 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from catboost import CatBoostClassifier
+from sklearn.linear_model import LogisticRegression
 from sqlalchemy.orm import relationship
 from schema import PostGet
+import joblib, pickle
 
 
 #DATABASE
@@ -54,31 +56,36 @@ class Feed(Base):
     post = relationship(Post)
 
 #LOAD FEATURES
-def batch_load_sql(query: str) -> pd.DataFrame:
-    CHUNKSIZE = 1000
-    conn = engine.connect().execution_options(stream_results=True)
-    chunks = []
-    for chunk_dataframe in pd.read_sql(query, conn,
-                                       chunksize=CHUNKSIZE):
-        chunks.append(chunk_dataframe)
-        print(chunk_dataframe)
-    conn.close()
-    data = pd.concat(chunks, ignore_index=True)
+ #def batch_load_sql(query: str) -> pd.DataFrame:
+ #   CHUNKSIZE = 1000
+  #  conn = engine.connect().execution_options(stream_results=True)
+  #  chunks = []
+  #  for chunk_dataframe in pd.read_sql(query, conn,
+  #                                     chunksize=CHUNKSIZE):
+  #      chunks.append(chunk_dataframe)
+   #     print(chunk_dataframe)
+  #  conn.close()
+  #  data = pd.concat(chunks, ignore_index=True)
 
-    return data
+  #  return data
 
 
-def load_features() -> pd.DataFrame:
-    query = "v_patrakeev_all_posts"
-    query2 = "v_patrakeev_all_users"
-    return batch_load_sql(query), batch_load_sql(query2)
+#def load_features() -> pd.DataFrame:
+#    query = "v_patrakeev_all_posts"
+#    query2 = "v_patrakeev_all_users"
+#    return batch_load_sql(query), batch_load_sql(query2)
 
 
 
 
 # Loading data by posts and users
-posts, users = load_features()
+#posts, users = load_features()
+posts, users = pd.read_csv("../post_feature_to_SQL", sep=";"),pd.read_csv("../user_feature_to_SQL", sep=";")
+print(posts)
+
 all_posts = list(posts['post_id'])
+
+
 
 
 def get_model_path(path: str) -> str:
@@ -89,9 +96,10 @@ def get_model_path(path: str) -> str:
     return MODEL_PATH
 
 def load_models():
-    model_path = get_model_path("../catboost_model")
-    from_file = CatBoostClassifier()
-    model = from_file.load_model(model_path)
+    model_path = get_model_path("../logistic_regression_model.pkl")
+    from_file = LogisticRegression()
+    #model = from_file.load_model(model_path)
+    model = joblib.load(model_path)
     return model
 
 model = load_models()
