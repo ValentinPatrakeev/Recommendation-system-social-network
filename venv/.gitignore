@@ -13,3 +13,8 @@ posts
 users
 .ipynb_checkpoints/
 catboost_model
+catboost_model_first
+train_data_first
+catboost_info/
+Service FastAPI RecSys/__pycache__/
+.idea/
