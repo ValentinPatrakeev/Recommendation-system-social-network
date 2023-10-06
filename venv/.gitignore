@@ -12,13 +12,7 @@ post_popularity
 posts
 users
 .ipynb_checkpoints/
-catboost_model
-catboost_model_first
-train_data_first
-train_data
 catboost_info/
 FastAPI/__pycache__/
 .idea/
-post_feature_to_SQL
-user_feature_to_SQL
-train_data_new
+
