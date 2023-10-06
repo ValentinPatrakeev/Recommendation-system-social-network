@@ -21,3 +21,4 @@ FastAPI/__pycache__/
 .idea/
 post_feature_to_SQL
 user_feature_to_SQL
+train_data_new
