@@ -11,6 +11,7 @@ feeds_data_5million
 post_popularity
 posts
 users
+train_data_new
 .ipynb_checkpoints/
 catboost_info/
 FastAPI/__pycache__/
