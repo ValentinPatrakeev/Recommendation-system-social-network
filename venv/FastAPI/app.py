@@ -12,9 +12,8 @@ from sqlalchemy.orm import sessionmaker
 from catboost import CatBoostClassifier
 from sklearn.linear_model import LogisticRegression
 from sqlalchemy.orm import relationship
-from schema import PostGet, Response
+from schema import PostGet
 import joblib, pickle
-import hashlib
 
 
 #DATABASE
@@ -77,46 +76,45 @@ def load_features() -> pd.DataFrame:
     return batch_load_sql(query), batch_load_sql(query2)
 
 
+
+
 # Loading data by posts and users
 posts, users = load_features()
 #posts, users = pd.read_csv("../post_feature_to_SQL_new", sep=";"),pd.read_csv("../user_feature_to_SQL_new", sep=";")
+print(posts)
 
 all_posts = list(posts['post_id'])
 
-def get_exp_group(user_id: int) -> str:
-    part = int(hashlib.md5((str(user_id) + 'salt').encode()).hexdigest(),16)% 100
-    if part >= 50:
-        exp_group = 'test'
-    else: exp_group = 'control'
-    return exp_group
+
+
 
 def get_model_path(path: str) -> str:
     if os.environ.get("IS_LMS") == "1":  # проверяем где выполняется код в лмс, или локально. Немного магии
-        if exp_group == 'test':
-            MODEL_PATH = '/workdir/user_input/model_test'
-        else: MODEL_PATH = '/workdir/user_input/model_control'
+        MODEL_PATH = '/workdir/user_input/model'
     else:
         MODEL_PATH = path
     return MODEL_PATH
 
-
 def load_models():
-    model_path_control = get_model_path("../model_first_LogReg.pkl")
-    model_path_test = get_model_path("../model_second_catboost")
-    from_file = CatBoostClassifier()
-    model_control = joblib.load(model_path_control)
-    model_test = from_file.load_model(model_path_test)
-    return model_control, model_test
+    model_path = get_model_path("../model_first_LogReg.pkl")
+    #model_path = get_model_path("../model_second_catboost")
+    #from_file = LogisticRegression()
+    #from_file = CatBoostClassifier()
+    #model = from_file.load_model(model_path)
+    model = joblib.load(model_path)
+    return model
 
-model_control, model_test = load_models()
+model = load_models()
 
 
 app=FastAPI()
+
+
 def get_db():
     return SessionLocal() #Создаем сессию при вызове функции get_db
 
 
-@app.get("/post/recommendations/", response_model=Response)
+@app.get("/post/recommendations/", response_model=List[PostGet])
 def recommended_post(id: int, time: str, limit: int=10, db: Session = Depends(get_db), all_posts=all_posts):
     if id in users["user_id"].values:
         user_action_view = db.query(Feed.post_id).filter(Feed.user_id == id, Feed.action == "view").all()
@@ -129,14 +127,6 @@ def recommended_post(id: int, time: str, limit: int=10, db: Session = Depends(ge
         df = df.merge(posts, how='left', left_on='post_id', right_on='post_id')
         df = df.merge(users, how='left', left_on='user_id', right_on='user_id')
 
-        exp_group = get_exp_group(id)
-        if exp_group == 'control':
-            model = model_control
-        elif exp_group == 'test':
-            model = model_test
-        else:
-            raise ValueError('unknown group')
-
         pred = pd.DataFrame(model.predict_proba(df.drop(columns=['user_id','post_id', 'time']))[:, 1], columns=["predict"])
         df = pd.concat([df, pred], axis=1)
         df = df.sort_values(by=["predict"])
@@ -144,8 +134,7 @@ def recommended_post(id: int, time: str, limit: int=10, db: Session = Depends(ge
         spisok = df["post_id"].tail(limit).tolist()
         for x in range(len(spisok)):
             spisok[x] = int(spisok[x])
-
-        result = Response(**{'exp_group':exp_group, 'recommendations':db.query(Post).filter(Post.id.in_(spisok)).limit(limit).all()})
+        result = db.query(Post).filter(Post.id.in_(spisok)).limit(limit).all()
         db.close()
         engine.dispose()
 
