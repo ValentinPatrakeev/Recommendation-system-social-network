@@ -13,7 +13,7 @@ from catboost import CatBoostClassifier
 from sklearn.linear_model import LogisticRegression
 from sqlalchemy.orm import relationship
 from schema import PostGet, Response
-import joblib, pickle
+import joblib
 import hashlib
 
 
@@ -77,6 +77,7 @@ def load_features() -> pd.DataFrame:
     return batch_load_sql(query), batch_load_sql(query2)
 
 
+
 # Loading data by posts and users
 posts, users = load_features()
 #posts, users = pd.read_csv("../post_feature_to_SQL_new", sep=";"),pd.read_csv("../user_feature_to_SQL_new", sep=";")
@@ -92,17 +93,21 @@ def get_exp_group(user_id: int) -> str:
 
 def get_model_path(path: str) -> str:
     if os.environ.get("IS_LMS") == "1":  # проверяем где выполняется код в лмс, или локально. Немного магии
-        if exp_group == 'test':
-            MODEL_PATH = '/workdir/user_input/model_test'
-        else: MODEL_PATH = '/workdir/user_input/model_control'
+        if path == 'control':
+            path = '/workdir/user_input/model_control'
+        elif path =='test':
+            path = '/workdir/user_input/model_test'
     else:
-        MODEL_PATH = path
-    return MODEL_PATH
+        if path == 'control':
+            path = '../model_first_LogReg.pkl'
+        elif path =='test':
+            path = '../model_second_catboost'
+    return path
 
 
 def load_models():
-    model_path_control = get_model_path("../model_first_LogReg.pkl")
-    model_path_test = get_model_path("../model_second_catboost")
+    model_path_control = get_model_path('control')
+    model_path_test = get_model_path('test')
     from_file = CatBoostClassifier()
     model_control = joblib.load(model_path_control)
     model_test = from_file.load_model(model_path_test)
