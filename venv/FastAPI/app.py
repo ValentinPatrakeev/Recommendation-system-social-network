@@ -99,7 +99,7 @@ def get_model_path(path: str) -> str:
             path = '/workdir/user_input/model_test'
     else:
         if path == 'control':
-            path = '../model_first_LogReg.pkl'
+            path = '../model_second_catboost_first'
         elif path =='test':
             path = '../model_second_catboost'
     return path
@@ -109,7 +109,7 @@ def load_models():
     model_path_control = get_model_path('control')
     model_path_test = get_model_path('test')
     from_file = CatBoostClassifier()
-    model_control = joblib.load(model_path_control)
+    model_control = from_file.load_model(model_path_control)
     model_test = from_file.load_model(model_path_test)
     return model_control, model_test
 
