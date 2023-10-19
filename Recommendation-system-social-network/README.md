@@ -1,7 +1,7 @@
 # Recommender System
 This repository presents an integrated approach to creating a recommendation system service.
-Uploaded to the repository:
 
+* Uploaded to the repository:
 1. [Download data and EDA.ipynb](https://github.com/ValentinPatrakeev/Recommendation-system-social-network/blob/main/Recommendation-system-social-network/1.%20Download%20data%20and%20EDA.ipynb) - Loading data from the database to the Jupyter Hub, reviewing the data
 2. [Create features.ipynb](https://github.com/ValentinPatrakeev/Recommendation-system-social-network/blob/main/Recommendation-system-social-network/2.%20Create%20features.ipynb) - Creation of features and training sample
 3. [Train model .ipynb](https://github.com/ValentinPatrakeev/Recommendation-system-social-network/blob/main/Recommendation-system-social-network/3.train%20model%20.ipynb) - Training models and assessing their quality on the validation set.
