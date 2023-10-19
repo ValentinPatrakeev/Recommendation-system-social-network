@@ -1,16 +1,13 @@
 # Recommender System
 This repository presents an integrated approach to creating a recommendation system service.
 Uploaded to the repository:
+
 1. [Download data and EDA.ipynb](https://github.com/ValentinPatrakeev/Recommendation-system-social-network/blob/main/Recommendation-system-social-network/1.%20Download%20data%20and%20EDA.ipynb) - Loading data from the database to the Jupyter Hub, reviewing the data
 2. [Create features.ipynb](https://github.com/ValentinPatrakeev/Recommendation-system-social-network/blob/main/Recommendation-system-social-network/2.%20Create%20features.ipynb) - Creation of features and training sample
 3. [Train model .ipynb](https://github.com/ValentinPatrakeev/Recommendation-system-social-network/blob/main/Recommendation-system-social-network/3.train%20model%20.ipynb) - Training models and assessing their quality on the validation set.
 4. [Test service.ipynb](https://github.com/ValentinPatrakeev/Recommendation-system-social-network/blob/main/Recommendation-system-social-network/4.%20test%20service.ipynb) - Imitation of a printer on the jupyter notebook
 5. [FastAPI servise](https://github.com/ValentinPatrakeev/Recommendation-system-social-network/tree/main/Recommendation-system-social-network/FastAPI)
-Входные данные:
-* таблицы на севрисе PostreSQL
-  1) users - size 163205
-  2) posts - size 7023
-  3) feeds - size to more 80 million (cut to 5 million)
+
 
 <img src="https://github.com/ValentinPatrakeev/Recommendation-system-social-network/blob/main/Recommendation-system-social-network/FastAPI/schema.png" width="100%">
 
