@@ -12,7 +12,6 @@ This repository presents an integrated approach to creating a recommendation sys
 
 <img src="https://github.com/ValentinPatrakeev/Recommendation-system-social-network/blob/main/Recommendation-system-social-network/FastAPI/schema.png" width="100%">
 
-
 #### 1. Download data and EDA.ipynb
 - General Data View with matplotlim pyplot.
 - We have 3 table (users, posts, feed)
@@ -22,7 +21,6 @@ This repository presents an integrated approach to creating a recommendation sys
 - Save date to format scv for comfortable local work
 - aggregation data with help SQL query ('post popularity')
 			
-
 ### 2. Create features.ipynb	
 - Create features by users (all users 163 205) - download on PostgreSQL
 - Create features by posts  - download on PostgreSQL
@@ -35,12 +33,12 @@ This repository presents an integrated approach to creating a recommendation sys
 - save models
 
 ### 4. test service.ipynb	
-	loading a model -> 
-	getting results for models by user_id -> 
-	predicting posts that will be liked -> 
-	returning a response.
+- loading a model -> 
+- getting results for models by user_id -> 
+- predicting posts that will be liked -> 
+- returning a response.
+
 ### 5. Writing a service FastAPI with pycahrm:
 - Creation of a full-fledged service
 - the service loads features in parallel with loading the model
 - after starting the service, tests in the postman	
--
