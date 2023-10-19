@@ -1,3 +1,4 @@
+<img src="https://developer-blogs.nvidia.com/wp-content/uploads/2018/12/catboost_hero.png](https://github.com/ValentinPatrakeev/Recommendation-system-social-network/blob/main/Recommendation-system-social-network/FastAPI/schema.png)" width="100%">
 
 
 1. Loading data from the database to the Jupyter Hub, reviewing the data:
