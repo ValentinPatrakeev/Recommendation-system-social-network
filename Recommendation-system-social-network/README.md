@@ -2,10 +2,11 @@
 В данном репозитории представлен комплексный подход к работе создания сервиса системы рекомендаций.
 В репозиторий загружены:
 -файлы jupyter notebook
-[1. Download data and EDA.ipynb](https://github.com/ValentinPatrakeev/Recommendation-system-social-network/blob/main/Recommendation-system-social-network/1.%20Download%20data%20and%20EDA.ipynb)
-[2. Create features.ipynb](https://github.com/ValentinPatrakeev/Recommendation-system-social-network/blob/main/Recommendation-system-social-network/2.%20Create%20features.ipynb)
-[3. Train model .ipynb](https://github.com/ValentinPatrakeev/Recommendation-system-social-network/blob/main/Recommendation-system-social-network/3.train%20model%20.ipynb)
-[4. Test service.ipynb](https://github.com/ValentinPatrakeev/Recommendation-system-social-network/blob/main/Recommendation-system-social-network/4.%20test%20service.ipynb)
+1. [Download data and EDA.ipynb](https://github.com/ValentinPatrakeev/Recommendation-system-social-network/blob/main/Recommendation-system-social-network/1.%20Download%20data%20and%20EDA.ipynb)
+2. [Create features.ipynb](https://github.com/ValentinPatrakeev/Recommendation-system-social-network/blob/main/Recommendation-system-social-network/2.%20Create%20features.ipynb)
+3. [Train model .ipynb](https://github.com/ValentinPatrakeev/Recommendation-system-social-network/blob/main/Recommendation-system-social-network/3.train%20model%20.ipynb)
+4. [Test service.ipynb](https://github.com/ValentinPatrakeev/Recommendation-system-social-network/blob/main/Recommendation-system-social-network/4.%20test%20service.ipynb)
+5. 
 Входные данные:
 * таблицы на севрисе PostreSQL
   1) users - size 163205
