@@ -13,16 +13,14 @@ This repository presents an integrated approach to creating a recommendation sys
 <img src="https://github.com/ValentinPatrakeev/Recommendation-system-social-network/blob/main/Recommendation-system-social-network/FastAPI/schema.png" width="100%">
 
 
-1. Loading data from the database to the Jupyter Hub, reviewing the data:
-file - 1. Download data and EDA.ipynb
-	
-	-General Data View with matplotlim pyplot.
-	-We have 3 table (users, posts, feed)
-		users - size 163205
-		posts - size 7023
-		feeds - size to more 80 million (cut to 5 million)
-	-Save date to format scv for comfortable local work
-	-aggregation data with help SQL query ('post popularity')
+#### 1. Download data and EDA.ipynb
+- General Data View with matplotlim pyplot.
+- We have 3 table (users, posts, feed)
+- 	users - size 163205
+- 	 osts - size 7023
+- 	   eds - size to more 80 million (cut to 5 million)
+- Save date to format scv for comfortable local work
+- aggregation data with help SQL query ('post popularity')
 			
 
 2. Creation of features and training sample. For example, user attributes, message texts, and other statistical data may be used.
