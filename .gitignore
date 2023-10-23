@@ -16,4 +16,5 @@ train_data_new
 catboost_info/
 FastAPI/__pycache__/
 .idea/
+.gitignore
 
