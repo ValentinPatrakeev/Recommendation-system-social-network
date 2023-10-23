@@ -14,3 +14,4 @@ category_encoders==2.5.0
 loguru==0.6.0
 implicit==0.5.2
 seaborn==0.12.2
+jupyter==1.0.0
