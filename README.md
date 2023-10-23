@@ -1,4 +1,5 @@
-# Recommender System
+# Recommendation-system-social-network
+<img align="centre" src="https://media.giphy.com/media/atZII8NmbPGw0/giphy.gif" width="300">
 This repository presents an integrated approach to creating a recommendation system service.
 
 * Uploaded to the repository:
