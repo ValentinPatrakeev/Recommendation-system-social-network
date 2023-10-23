@@ -10,7 +10,7 @@ This repository presents an integrated approach to creating a recommendation sys
 
 ### Conceptual diagram of working with data, training and creating services is presented in the diagram
 
-<img src="https://github.com/ValentinPatrakeev/Recommendation-system-social-network/blob/main/Recommendation-system-social-network/FastAPI/schema.png" width="100%">
+<img src="https://github.com/ValentinPatrakeev/Recommendation-system-social-network/blob/main/FastAPI/schema.png" width="100%">
 
 #### 1. Download data and EDA.ipynb
 - General Data View with matplotlim pyplot.
