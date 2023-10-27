@@ -17,6 +17,8 @@ app=FastAPI()
 def get_db():
     return SessionLocal()
 
+
+
 #Загружаем наши признаки для модели с севера
 ##posts, users = load_features()
 ##либо загружаем локально
