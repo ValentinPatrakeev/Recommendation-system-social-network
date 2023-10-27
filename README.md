@@ -29,4 +29,20 @@
 - The best model based on the metric **HitRate@5** (the metric takes the value = 1 if the user liked 1 or more posts out of 5 posts, 0 if none of the 5 were liked)
 -- On test data, the catboost model showed HitRate@5 = 0.866
 
-
+ 
+### Start service 
+At the moment, the project is not invested in Docker (close to implementation), so you can start the service as follows:
+1. **We clone to ourselves locally:**
+<br/> <git clone git@github.com:ValentinPatrakeev/Recommendation-system-social-network.git>
+2. **create a virtual environment:**
+<br/> python -m venv Recommendation-system-social-network
+3. **Go to the folder, the virtual environment starts, install the libraries:**
+<br/>- cd Recommendation-system-social-network
+<br/>- .\\Scripts\\activate
+<br/>- pip install -r requirements.txt
+4. **start service**
+<br/>- cd .\FastAPI
+<br/>- uvicorn app:app
+5. **You can make the request in the browser or in Postman:**
+<br/> ***localhost:8000/post/recommendations/?id=200&time=2023-11-12 22:57:45***
+<br/> In this request template you can change the ID and time. Range of possible identifiers: 199 < id < 163206
