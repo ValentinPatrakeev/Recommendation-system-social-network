@@ -1,17 +1,14 @@
 # Recommendation-system-social-network
 
-<br/> **It is necessary to implement a recommendation system for posts on a social network, which will return posts for each user at any time that will be shown to the user in his social network feed.**
+**It is necessary to implement a recommendation system for posts on a social network, which will return posts for each user at any time that will be shown to the user in his social network feed.**
 <br/>
-<br/><img align="left" src="https://media.giphy.com/media/atZII8NmbPGw0/giphy.gif" width="400">
 > &ensp; **Initial data:**
-<br/> &ensp; As basic raw data - table with PostreSQL
-<br/>&ensp; 1) **Users** - user data
-<br/>&ensp; 2) **Posts** - post data
-<br/>&ensp; 3) **Feeds** - user activity data
-<br/>&ensp; - *The set of users is fixed and no new ones will appear*
-<br/>&ensp; - *Models are not retrained when using services*
-<br/>
-<br/>
+<br/> &ensp; &#8226; As basic raw data - table with PostreSQL
+<br/>&ensp; &#8226; **Users** - user data
+<br/>&ensp; &#8226; **Posts** - post data
+<br/>&ensp; &#8226; **Feeds** - user activity data
+<br/>&ensp; &#8226; The set of users is fixed and no new ones will appear*
+<br/>&ensp; &#8226; Models are not retrained when using services*
 
 **Uploaded to the repository:**
 1. [Download data and EDA.ipynb](https://github.com/ValentinPatrakeev/Recommendation-system-social-network/blob/main/1.%20Download%20data%20and%20EDA.ipynb) - Loading data from the database to the Jupyter Hub, reviewing the data
