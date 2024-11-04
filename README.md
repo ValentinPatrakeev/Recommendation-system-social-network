@@ -1,14 +1,17 @@
 # Recommendation-system-social-network
 
-**It is necessary to implement a recommendation system for posts on a social network, which will return posts for each user at any time that will be shown to the user in his social network feed.**
+<br/> **It is necessary to implement a recommendation system for posts on a social network, which will return posts for each user at any time that will be shown to the user in his social network feed.**
 <br/>
+<br/><img align="left" src="https://media.giphy.com/media/atZII8NmbPGw0/giphy.gif" width="400">
 > &ensp; **Initial data:**
-<br/> &ensp; &#8226; As basic raw data - table with PostreSQL
-<br/>&ensp; &#8226; **Users** - user data
-<br/>&ensp; &#8226; **Posts** - post data
-<br/>&ensp; &#8226; **Feeds** - user activity data
-<br/>&ensp; &#8226; The set of users is fixed and no new ones will appear*
-<br/>&ensp; &#8226; Models are not retrained when using services*
+<br/> &ensp; As basic raw data - table with PostreSQL
+<br/>&ensp; 1) **Users** - user data
+<br/>&ensp; 2) **Posts** - post data
+<br/>&ensp; 3) **Feeds** - user activity data
+<br/>&ensp; - *The set of users is fixed and no new ones will appear*
+<br/>&ensp; - *Models are not retrained when using services*
+<br/>
+<br/>
 
 **Uploaded to the repository:**
 1. [Download data and EDA.ipynb](https://github.com/ValentinPatrakeev/Recommendation-system-social-network/blob/main/1.%20Download%20data%20and%20EDA.ipynb) - Loading data from the database to the Jupyter Hub, reviewing the data
@@ -38,19 +41,24 @@
  
 ### Start service 
 At the moment, the project is not invested in Docker (close to implementation), so you can start the service as follows:
-1. **We clone to ourselves locally:**
-<br/> <git clone git@github.com:ValentinPatrakeev/Recommendation-system-social-network.git>
-2. **create a virtual environment:**
-<br/> python -m venv Recommendation-system-social-network
-3. **Go to the folder, the virtual environment starts, install the libraries:**
-<br/>- cd Recommendation-system-social-network
-<br/>- .\\Scripts\\activate
-<br/>- pip install -r requirements.txt
-<br/>- **request** the **.env file** - where the key to the PostgreSQL service will be specified! 
 
-5. **start service**
-<br/>- cd .\FastAPI
-<br/>- uvicorn app:app
-6. **You can make the request in the browser or in Postman:**
-<br/> ***localhost:8000/post/recommendations/?id=200&time=2023-11-12 22:57:45***
-<br/> In this request template you can change the ID and time. Range of possible identifiers: 199 < id < 163206
+1. **Clone the project locally:**
+   <br/> `git clone git@github.com:ValentinPatrakeev/Recommendation-system-social-network.git`
+
+2. **Navigate to the project folder:**
+   <br/> `cd Recommendation-system-social-network`
+
+3. **Install dependencies using Poetry:**
+   <br/> `poetry install`
+
+4. **Request the `.env` file** – this file should contain the PostgreSQL service key.
+
+5. **Start the service:**
+   <br/>- **Activate the virtual environment:**
+     <br/> `poetry shell`
+   <br/>- **Run the FastAPI server:**
+     <br/> `poetry run uvicorn app:app --host 0.0.0.0 --port 8000`
+
+6. **Test the service using a browser or Postman:**
+   <br/> `http://localhost:8000/post/recommendations/?id=200&time=2023-11-12%2022:57:45`
+   <br/> In this request template, you can change the ID and time. Range of possible IDs: `199 < id < 163206`.
