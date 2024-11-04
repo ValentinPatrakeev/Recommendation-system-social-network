@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.database.database import get_db
-from app.services.recommendation_service import get_user_recommendations
+from app.recommendations.service import get_user_recommendations
 from app.database.models.post import Post
-from app.services.load_features import feature_loader
+from app.recommendations.load_features import feature_loader
 router = APIRouter()
 
 @router.get("/post/recommendations/")
