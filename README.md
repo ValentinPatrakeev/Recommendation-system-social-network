@@ -40,7 +40,6 @@
 
  
 ### Start service 
-### Start service 
 At the moment, the project is not invested in Docker (close to implementation), so you can start the service as follows:
 
 1. **Clone the project locally:**
