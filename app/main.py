@@ -1,11 +1,11 @@
 from fastapi import FastAPI
-from app.routers import rec_post
+from app.recommendations import router
 from config.settings import settings  # Импорт настроек
 
 app = FastAPI()
 
 # Подключаем роутер для работы с постами
-app.include_router(rec_post.router)
+app.include_router(router.router)
 
 # Главная страница для проверки работы API
 @app.get("/")
